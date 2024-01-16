@@ -40,3 +40,55 @@ All calls to generate will contain unique values of tokenId.
 The values of currentTime across all the function calls will be strictly increasing.
 At most 2000 calls will be made to all functions combined.
 '''
+class AuthenticationManager(object):
+
+    def __init__(self, timeToLive):
+        """
+        :type timeToLive: int
+        """
+        self.timeToLive = timeToLive
+        self.tokens = []
+        self.expire = []
+        
+
+    def generate(self, tokenId, currentTime):
+        """
+        :type tokenId: str
+        :type currentTime: int
+        :rtype: None
+        """
+        self.tokens.append(tokenId)
+        self.expire.append(currentTime + self.timeToLive)
+        
+
+    def renew(self, tokenId, currentTime):
+        """
+        :type tokenId: str
+        :type currentTime: int
+        :rtype: None
+        """
+        if tokenId in self.tokens:
+            if self.expire[self.tokens.index(tokenId)] > currentTime:
+                self.expire[self.tokens.index(tokenId)] = currentTime + self.timeToLive
+            
+
+    
+    def countUnexpiredTokens(self, currentTime):
+        """
+        :type currentTime: int
+        :rtype: int
+        """
+        if self.tokens != None:
+            result = 0
+            for expire_time in self.expire:
+                if expire_time > currentTime:
+                    result += 1
+            return result
+        else:
+            return 0
+
+# Your AuthenticationManager object will be instantiated and called as such:
+# obj = AuthenticationManager(timeToLive)
+# obj.generate(tokenId,currentTime)
+# obj.renew(tokenId,currentTime)
+# param_3 = obj.countUnexpiredTokens(currentTime)
