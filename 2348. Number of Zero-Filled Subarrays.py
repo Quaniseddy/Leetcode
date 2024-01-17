@@ -1,5 +1,6 @@
-Given an integer array nums, return the number of subarrays filled with 0.
 '''
+Given an integer array nums, return the number of subarrays filled with 0.
+
 A subarray is a contiguous non-empty sequence of elements within an array.
 
  
@@ -33,3 +34,26 @@ Constraints:
 1 <= nums.length <= 105
 -109 <= nums[i] <= 109
 '''
+
+class Solution(object):
+    def zeroFilledSubarray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+    
+        occurence = 0
+        count = 0
+        for num in nums:
+            if num == 0:
+                count += 1
+            else:
+                occurence += ((count+1)*count/2)
+                count = 0
+        
+        if nums[-1] == 0:
+            occurence += ((count+1)*count/2)
+        
+        return occurence
+
+    
