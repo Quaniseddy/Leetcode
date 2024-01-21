@@ -48,3 +48,18 @@ Guaranteed constraints:
 
 The array containing the grouped dishes.
 '''
+
+from collections import defaultdict
+
+def solution(dishes):
+    dic = defaultdict(set)
+    for i in dishes:
+        dish = i[0]
+        for j in i[1:]:
+            dic[j].add(dish)
+    result = []
+    for m in sorted(dic):
+        if len(dic[m]) >= 2:
+            tmp = [m] + sorted(list(dic[m]))
+            result.append(tmp)
+    return result
