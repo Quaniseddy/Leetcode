@@ -1,3 +1,7 @@
-# Leetcode
+# Coding Challenges I have cracked or attempted
 
-#question attempts from easy to hard
+#questions from Leetcode and CodeSignal
+
+#Currently writing in Python
+
+#more languages to be attempted
