@@ -40,7 +40,7 @@ class Solution(object):
         count = 0
         for i in range(len(nums)-1):
             for j in range(i+1,len(nums),+1):
-                if nums[i] % k == 0 or nums[j] % k == 0:
+                if nums[i] * nums[j] % k == 0:
                     count += 1
         
         return count
