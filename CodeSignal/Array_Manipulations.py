@@ -52,4 +52,27 @@ def solution(s):
         return result[0]
     else:
         return '_'
+
+'''
+
+You are given an n x n 2D matrix that represents an image. Rotate the image by 90 degrees (clockwise).
+
+Example
+
+For
+
+a = [[1, 2, 3],
+     [4, 5, 6],
+     [7, 8, 9]]
+the output should be
+
+solution(a) =
+    [[7, 4, 1],
+     [8, 5, 2],
+     [9, 6, 3]]
+'''
+def solution(a):
+    n = len(a) - 1
+    return [[a[i][j] for i in range(n,-1,-1)] for j in range(0,n+1,+1)]
+
             
