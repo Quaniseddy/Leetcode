@@ -31,6 +31,8 @@ Constraints:
 1 <= nums[i], threshold <= 109
 '''
 
+#brutal force
+#time limits exceed
 class Solution(object):
     def validSubarraySize(self, nums, threshold):
         """
@@ -38,4 +40,21 @@ class Solution(object):
         :type threshold: int
         :rtype: int
         """
+        for i in range(1,len(nums),+1):
+            n = threshold / i
+            count = 0
+            for num in nums:
+                if num > n:
+                    count += 1
+
+                if count >= i:
+                    return i
+
+                if num <= n:
+                    count = 0
+
+        
+        return -1
+
+        
         
