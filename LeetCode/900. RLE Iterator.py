@@ -35,3 +35,37 @@ encoding.length is even.
 1 <= n <= 109
 At most 1000 calls will be made to next.
 '''
+
+#first attempt
+#memory limit exceed
+
+class RLEIterator(object):
+
+    def __init__(self, encoding):
+        """
+        :type encoding: List[int]
+        """
+        tmp = []
+        multi = 0
+        for i in range(len(encoding)):
+            if i % 2 == 0:
+                multi = encoding[i]
+            else:
+                if multi != 0:
+                    tmp += [encoding[i]] * multi
+
+        self.encoded = tmp
+
+    def next(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        if len(self.encoded) >= n:
+            res = self.encoded[n-1]
+            self.encoded = self.encoded[n:]
+            return res
+        else:
+            return -1
+
+        
