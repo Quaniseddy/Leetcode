@@ -52,8 +52,25 @@ class Solution(object):
 
                 if num <= n:
                     count = 0
+        return -1
 
-        
+
+#stack approach
+ class Solution(object):
+    def validSubarraySize(self, nums, threshold):
+        """
+        :type nums: List[int]
+        :type threshold: int
+        :rtype: int
+        """
+        nums = [0] + nums + [0]
+        stack = [0]
+        for i in range(1,len(nums)):
+            while nums[i] < nums[stack[-1]]:
+                tmp = nums[stack.pop()]
+                if tmp > threshold / (i - stack[-1] - 1):
+                    return i - stack[-1] - 1
+            stack.append(i)
         return -1
 
         
