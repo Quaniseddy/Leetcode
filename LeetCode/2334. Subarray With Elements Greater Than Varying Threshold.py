@@ -56,7 +56,7 @@ class Solution(object):
 
 
 #stack approach
- class Solution(object):
+class Solution(object):
     def validSubarraySize(self, nums, threshold):
         """
         :type nums: List[int]
